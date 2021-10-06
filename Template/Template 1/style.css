@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #383838;
+}
+
+.container {
+    max-width: 1146px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+header {
+    background: #BEB7D8;
+    padding: 13.5px 0;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contacts a {
+    color: #383838;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 25px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contacts a img {
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+}
+
+.btn {
+    background: #006BA7;
+    font-size: 12px;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    width: 180px;
+    padding: 13.2px 0;
+}
+
+.logo {
+    width: 150px;
+    height: 34px;
+}
+
+.courser-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    flex-direction: column;
+    background-image: url('img/laptop.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 300px;
+}
+
+.courser-info h1 {
+    font-size:36px;
+    color: #006BA7;
+    margin: 0;
+}
+
+.courser-info p {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.buttons {
+    width: 390px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bg {
+    background-color: #BEB7D8;
+}
+
+.education-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 70px 0 60px;
+
+}
+
+.education-info .cart{
+    width: 335px;
+}
+
+footer {
+    background-color: #383838;
+    text-align: center;
+    color: #fff;
+    height: 40px;
+    padding: 11px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+@media (max-width: 992px) {
+    header {
+        height: 150px;
+        padding: 20px;
+    }
+  
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .header-info {
+        flex-direction: column;
+    
+    }
+}
+
+@media (max-width: 767px){
+    header {
+        height: 210px;
+        padding-top: 23px;
+    }
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contacts a {
+        margin-bottom: 5px;
+    }
+
+    .header-btn {
+        margin-top: 12px;
+    }
+
+    .courser-info {
+        height: 350px;
+    }
+
+    .couser-info h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .buttons {
+        width: auto;
+        flex-direction: column;
+        
+    }
+
+    .buttons .btn {
+        margin-bottom: 12px;
+    }
+
+    .education-info {
+        padding: 20px 0;
+    }
+}
