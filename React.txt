@@ -1,0 +1,83 @@
+***** Створення проекта *****
+
+перейти в потрібну папку npx-create-react-app name_project
+
+Всі обробка в src/App.js
+
+import React from 'react'
+import TodoList from './Todo/TodoList' // імпорт компонента src/Todo/TodoList.js
+
+function App() { // функція поверне все в body
+  return (
+    <div className="wrapper">
+      <h1>Rect</h1>
+      <TodoList /> // синтаксис React (викликає функцію TodoList())
+    </div>
+  )
+}
+
+export default App;
+
+***** TodoList.js *****
+
+import React from 'react'
+
+const styles = {
+    ul:{
+        listStyle:'none', // верблюжий стиль написання css
+        margin: 0,
+        padding: 0
+    }
+}
+export default function TodiList(){
+    return (
+        <ul style={styles.ul}> // вставка об'єкта js без лапок ({})
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    )
+}
+
+******** Бібліотека prop-types ********
+npm install prop-types
+
+import PropTypes from 'prop-types' // підключення бібліотеки типів
+
+function TodoList(props){
+    return (
+        <ul style={styles.ul}>
+            {props.todos.map((todo,index) =>{
+
+                return <TodoItem todo={todo} key={todo.id} index={index}/>
+            })}
+        </ul>
+    )
+}
+
+TodoList.propTypes = { // добавити до функція об'єкт
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired // валідація масива із об'єктів
+}
+
+
+export default TodoList
+
+--------------------------
+
+mport React from 'react'
+import PropTypes from 'prop-types'
+
+function TodoItem({todo,index}){
+    return (<li>
+                <strong>{index+1}</strong>{todo.title}
+            </li>
+    )
+    
+}
+
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired,
+    index: PropTypes.number
+}
+
+
+export default TodoItem

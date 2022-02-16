@@ -1,0 +1,195 @@
+******* Отримання *********
+
+const q = document.querySelector('li'); поверне перше <li>
+
+const q = document.querySelector('li.two'); поверне <li> з класом two
+
+const q = document.querySelectorAll('li'); поверне всі <li>
+
+console.log(q[0]) вивести з масиву конкретний <li> 
+
+const q = document.querySelectorAll('p');
+q.textContent поверне тект параграфа
+
+******** Створення *********
+
+const q = document.createElement('li'); створить новий елемент <li></li>
+
+const p = document.createElement('p');
+p.textContent = 'p'; добавлення тексу до елемента
+
+q.append(p); добавити в кінець елемент q(<li></li>) значення p(<p>p</p>) результат <li> <p> p </p> </li>
+q.prepend(p); добавляє елементи спочатку
+
+******** Видалення ******** 
+
+const q = document.querySelector('li')[1];
+q.remove(); видалити елемент
+
+************************** Event *********************
+
+const username = document.querySelector('#list > li:nth-child(1) > p.username');
+
+username.addEventListener('click',(evnt)=>{ обробник подій приймає подію та колбек event
+console.log("Click!!!",evnt.target); target це посилання на елемент тобто ('#list > li:nth-child(1) > p.username')
+});
+
+**************** Видалення ************
+
+const username = document.querySelector('#list > li:nth-child(1) > p.username');
+username.addEventListener('click',(evnt)=>{ 
+event.target.remove(); видалити елемент при кліці
+});
+
+*********** Щоб не виконивалися дві події підряд ************
+
+event.stopPropagation();
+
+******** Щоб браузер не перезавантажувався та отримання даних із форми *********
+form.addEventListener('submit',(event)=>{
+	event.preventDefault();
+	
+	const data = new FormData(evt.target);
+
+	console.log('submit',data.get(name="text" ім'я інпута або текстерії)); 
+})
+
+****************** Читання даних із форми та добавлення в список ***************
+
+<main>
+
+      <form id="form">
+        <textarea name="text"></textarea>
+
+        <button type="submit">Add</button>
+      </form>
+
+      <ul id="list">
+        <li>
+          <p class="username">username1</p>
+          <p class="text">text1</p>
+        </li>
+
+        <li>
+          <p class="username">username2</p>
+          <p class="text">text2</p>
+        </li>
+      </ul>
+</main>
+
+const list = document.querySelector('#list');
+const form = document.querySelector('form');
+
+
+form.addEventListener('submit',(e) =>{ 
+    e.preventDefault(); відмінити перезавантаження браузера
+
+    const data = new FormData(e.target); клас для роботи із формою
+
+    const li = document.createElement('li');
+
+    li.innerHTML = `<p class="username">username</p>
+                    <p class="text">${data.get('text')}</p>`; витягування даних із інпута
+    
+    list.prepend(li);
+
+    const textarea = document.querySelector('textarea');
+
+    textarea.value = '';
+
+});
+
+************* Добавити та видалити атрибут *************
+
+
+<main>
+      <form id="form">
+        <textarea name="text"></textarea>
+
+        <button type="submit" disabled >Add</button>
+      </form>
+
+      <ul id="list">
+        <li>
+          <p class="username">username1</p>
+          <p class="text">text1</p>
+        </li>
+
+        <li>
+          <p class="username">username2</p>
+          <p class="text">text2</p>
+        </li>
+      </ul>
+</main>
+
+const list = document.querySelector('#list');
+const form = document.querySelector('form');
+const textarea = document.querySelector('textarea');
+const button = form.querySelector('button');
+
+textarea.addEventListener('input',(e)=>{
+    console.log(e.target.value.length);
+    if(e.target.value.length == 0){
+        button.setAttribute('disabled',true);
+    }else {
+        button.removeAttribute('disabled');
+    }
+});
+
+********* LocalStorage і SessionStorage *********
+
+LocalStorage - дані доступні у всіх вкладках
+SessionStorage - дані доступні тільки на одній вкладці
+
+ <header>
+      <input type="text" id="text">
+      <button type="submit" name="submit">Send</button>
+      <p>Value: <span id="localStorage"></span></p>
+ </header>
+
+const text = document.querySelector('#text');
+const submit = document.querySelector('button[name=submit]');
+const span = document.querySelector('#localStorage');
+
+const textStorage = window.localStorage.getItem('localStorage'); // отримання даних із localStorage
+
+if(textStorage !== null){
+    span.textContent = textStorage;
+}
+
+console.log(text);
+console.log(submit);
+console.log(span);
+console.log(textStorage);
+
+
+submit.addEventListener('click',(e)=>{
+    window.localStorage.setItem('localStorage',text.value); // засетети значення в localStorage
+    window.location.reload(); // перезавантажити сторінку
+});
+
+************* Добавити в адресну стрічку текст *************
+
+window.history.pushState(null,null,`/users/${tweet.dataset.userId}`) 
+
+
+************ Data атрибути ************
+
+element.dataset.name = 'value'; // добавляє дата атрибут (<li data-name="value"></li>)
+
+const res = element.dataset.name; // геттер
+
+************* Передавання даних на index.html **************
+
+live-server --entry-file=index.html
+
+
+
+
+
+
+
+
+
+
+

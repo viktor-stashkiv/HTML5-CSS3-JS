@@ -1,0 +1,61 @@
+************ GET **************
+
+fetch('URL')
+  .then((response)=>{
+	return response.json(); // конвертує JSON формат у JS об'єкт
+})
+  .then((data) => {
+	console.log(data);
+})
+  .catch((err) =>{
+	console.log('Fetch Error',err);
+})
+
+
+************ POST *************
+
+const url = 'https://example.com/profile';
+const data = { username: 'example' };
+
+try {
+  const response = await fetch(url, {
+    method: 'POST', // або 'PUT'
+    body: JSON.stringify(data), // конвертація в JSON формат 
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const json = await response.json();
+  console.log('Успех:', JSON.stringify(json));
+} catch (error) {
+  console.error('Ошибка:', error);
+}
+
+************ PUT ************ 
+
+const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id:1,title: 'New title',body:'New body' })
+};
+
+fetch('https://reqres.in/api/articles/1', requestOptions)
+.then((response)=>{
+    return response.json()
+})
+.then((data)=>{
+    console.log(data)
+});
+
+
+************ DELETE ***********
+
+fetch('https://jsonplaceholder.typicode.com/posts/1',{
+    method:'DELETE'
+}).then(response=>{
+    return response.json()
+}).then(data=> 
+console.log(data)
+);
+
